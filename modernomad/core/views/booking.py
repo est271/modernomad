@@ -55,8 +55,8 @@ class RoomApiList(mixins.ListModelMixin, generics.GenericAPIView):
         def room_available_during_period(room, arrive, depart):
             availabilities = room.daily_availabilities_within(arrive, depart)
             zero_quantity_dates = [avail for avail in availabilities if avail[1] == 0]
-            if zero_quantity_dates:
-                return False
+            # if zero_quantity_dates:
+                # return False
             return True
 
         qs = queryset.filter(location__slug=self.kwargs['location_slug'])
